@@ -11,8 +11,8 @@ module Koudoku::Coupon
     # Validations
     validates_presence_of :duration, :code
     validates_uniqueness_of :code
-    validate :exclusivity_of_percentage_and_amount_off
-    validate :presence_of_atleast_percentage_or_amount_off
+    validate :exclusivity_of_percent_and_amount_off
+    validate :presence_of_atleast_percent_or_amount_off
     validate :duration_in_months_is_relative_to_duration
     validate :stripe_valid_duration
 
@@ -24,7 +24,7 @@ module Koudoku::Coupon
         duration: duration,
         duration_in_months: duration_in_months,
         max_redemptions: max_redemptions,
-        percent_off: percentage_off,
+        percent_off: percent_off,
         amount_off: amount_off,
       }
       coupon_hash[:redeem_by] = redeem_by.strftime('%s') if redeem_by.present?
@@ -44,15 +44,15 @@ module Koudoku::Coupon
       end
     end
 
-    def exclusivity_of_percentage_and_amount_off
-      if percentage_off.present? && amount_off.present?
-        errors.add(:percentage_off, 'cannot set both amount_off and percentage_off')
+    def exclusivity_of_percent_and_amount_off
+      if percent_off.present? && amount_off.present?
+        errors.add(:percent_off, 'cannot set both amount_off and percent_off')
       end
     end
 
-    def presence_of_atleast_percentage_or_amount_off
-      if percentage_off.blank? && amount_off.blank?
-        errors.add(:percentage_off, 'need to set atleast one off attribute')
+    def presence_of_atleast_percent_or_amount_off
+      if percent_off.blank? && amount_off.blank?
+        errors.add(:percent_off, 'need to set atleast one off attribute')
       end
     end
 

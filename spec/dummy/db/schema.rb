@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20130520163946) do
     t.integer  "coupons"
     t.integer  "interval"
     t.float    "amount_off"
-    t.integer  "percentage_off"
+    t.integer  "percent_off"
     t.datetime "redeem_by"
     t.integer  "max_redemptions"
     t.string   "duration"

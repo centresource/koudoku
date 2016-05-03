@@ -5,7 +5,7 @@ class CreateCoupons < ActiveRecord::Migration
       t.string :free_trial_length
       t.integer :coupons, :interval
       t.float :coupons, :amount_off
-      t.integer :coupons, :percentage_off
+      t.integer :coupons, :percent_off
       t.datetime :coupons, :redeem_by
       t.integer :coupons, :max_redemptions
       t.string :coupons, :duration

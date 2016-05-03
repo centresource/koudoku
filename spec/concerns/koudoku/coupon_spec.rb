@@ -3,33 +3,33 @@ require 'spec_helper'
 describe Koudoku::Coupon do
   describe "validations" do
     before :each do
-      @coupon = Coupon.new(duration: 'once', code: 'code', percentage_off: 10)
+      @coupon = Coupon.new(duration: 'once', code: 'code', percent_off: 10)
     end
 
-    it "invalid if amount_off and percentage_off set at the sametime" do
+    it "invalid if amount_off and percent_off set at the sametime" do
       @coupon.amount_off = 1.99
-      @coupon.percentage_off = 50
+      @coupon.percent_off = 50
 
       expect(@coupon).to_not be_valid
     end
 
-    it "valid if only percentage_off is set" do
+    it "valid if only percent_off is set" do
       @coupon.amount_off = nil
-      @coupon.percentage_off = 50
+      @coupon.percent_off = 50
 
       expect(@coupon).to be_valid
     end
 
     it "valid if only amount_off is set" do
       @coupon.amount_off = 1.99
-      @coupon.percentage_off = nil
+      @coupon.percent_off = nil
 
       expect(@coupon).to be_valid
     end
 
-    it "invalid if neither amount_off or percentage_off is set" do
+    it "invalid if neither amount_off or percent_off is set" do
       @coupon.amount_off = nil
-      @coupon.percentage_off = nil
+      @coupon.percent_off = nil
 
       expect(@coupon).to_not be_valid
     end
