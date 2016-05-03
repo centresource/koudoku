@@ -2,7 +2,7 @@ module Koudoku::Coupon
   extend ActiveSupport::Concern
 
   included do
-    VALID_DURATIONS = %['repeating', 'once', 'forever']
+    VALID_DURATIONS = ['repeating', 'once', 'forever']
 
     # Callbacks
     after_create  :create_stripe_coupon
