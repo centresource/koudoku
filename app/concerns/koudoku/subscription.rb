@@ -8,6 +8,7 @@ module Koudoku::Subscription
     attr_accessor :credit_card_token, :cancel_at_period_end
 
     belongs_to :plan
+    belongs_to :coupon
 
     # update details.
     before_save :processing!
@@ -158,7 +159,7 @@ module Koudoku::Subscription
   # Set a Stripe coupon code that will be used when a new Stripe customer (a.k.a. Koudoku subscription)
   # is created
   def coupon_code=(new_code)
-    coupon = Coupon.find_by_code(new_code)
+    self.coupon = Coupon.find_by_code(new_code)
   end
 
   # Pretty sure this wouldn't conflict with anything someone would put in their model
