@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20130520163946) do
     t.string   "code"
     t.string   "free_trial_length"
     t.integer  "coupons"
-    t.integer  "interval"
     t.float    "amount_off"
     t.integer  "percent_off"
     t.datetime "redeem_by"
